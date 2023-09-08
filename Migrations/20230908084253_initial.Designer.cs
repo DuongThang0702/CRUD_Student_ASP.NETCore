@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUD_Asp.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    [Migration("20230908075325_initial")]
+    [Migration("20230908084253_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -27,9 +27,11 @@ namespace CRUD_Asp.Migrations
 
             modelBuilder.Entity("CRUD_Asp.Models.Student.Student", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
